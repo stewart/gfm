@@ -5,4 +5,4 @@ python:
   - 3.3
 script: python test_gfm.py
 install:
-  - pip install -r requirements.txt
+  - pip install markdown

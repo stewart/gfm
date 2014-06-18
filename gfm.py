@@ -32,9 +32,9 @@ def gfm(text):
         string = "\n\n" + extractions[matchobj.group(1)]
         return string
 
-    text = re.sub("<pre>.*?<\/pre>", extract_pre_block, text, flags=re.S)
+    text = re.sub("(?s)<pre>.*?<\/pre>", extract_pre_block, text)
     text = re.sub("(^(?! {4}|\t)\w+_\w+_\w[\w_]*)", escape_underscore, text)
-    text = re.sub("^[\w\<][^\n]*\n+", newlines_to_brs, text, flags=re.M)
+    text = re.sub("(?m)^[\w\<][^\n]*\n+", newlines_to_brs, text)
     text = re.sub("\{gfm-extraction-([0-9a-f]{32})\}", insert_pre_block, text)
 
     return text
